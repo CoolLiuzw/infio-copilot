@@ -339,6 +339,15 @@ export const openAINativeEmbeddingModels = {
 	}
 } as const satisfies Record<string, EmbeddingModelInfo>
 
+// OpenAI Compatible Embedding Models
+// https://openai.com/api/
+export const openAICompatibleEmbeddingModels = {
+	"text-embedding-ada-002": {
+		dimensions: 1536,
+		description: "Most capable 2nd generation embedding model, replacing 16 first generation models"
+	}
+} as const satisfies Record<string, EmbeddingModelInfo>
+
 // DeepSeek
 // https://api-docs.deepseek.com/quick_start/pricing
 export type DeepSeekModelId = keyof typeof deepSeekModels
@@ -538,6 +547,33 @@ export const qwenEmbeddingModels = {
 // bytedance volcengine
 //https://api.volcengine.com/api-docs/view/overview
 
+
+// OpenAI Compatible Models
+// https://openai.com/api/
+export type OpenAICompatibleModelId = keyof typeof openAICompatibleModels
+export const openAICompatibleDefaultModelId: OpenAICompatibleModelId = "deepseek-v3"
+export const openAICompatibleModels = {
+	"deepseek-v3": {
+		maxTokens: 8000,
+		contextWindow: 64000,
+		supportsImages: false,
+		supportsPromptCache: true,
+		inputPrice: 0,
+		outputPrice: 0.28,
+		cacheWritesPrice: 0.14,
+		cacheReadsPrice: 0.014,
+	},
+	"deepseek-r1": {
+		maxTokens: 8000,
+		contextWindow: 64000,
+		supportsImages: false,
+		supportsPromptCache: true,
+		inputPrice: 0,
+		outputPrice: 2.19,
+		cacheWritesPrice: 0.55,
+		cacheReadsPrice: 0.14,
+	},
+} as const satisfies Record<string, ModelInfo>
 
 // SiliconFlow
 // https://docs.siliconflow.cn/
@@ -1141,7 +1177,8 @@ export const GetEmbeddingProviders = (): ApiProvider[] => {
 		ApiProvider.OpenAI,
 		ApiProvider.SiliconFlow,
 		ApiProvider.Google,
-		ApiProvider.AlibabaQwen
+		ApiProvider.AlibabaQwen,
+		ApiProvider.OpenAICompatible
 	]
 }
 
@@ -1230,6 +1267,8 @@ export const GetEmbeddingProviderModels = (provider: ApiProvider): Record<string
 			return openAINativeEmbeddingModels;
 		case ApiProvider.AlibabaQwen:
 			return qwenEmbeddingModels;
+		case ApiProvider.OpenAICompatible:
+			return openAICompatibleEmbeddingModels;
 		default:
 			return {}
 	}
