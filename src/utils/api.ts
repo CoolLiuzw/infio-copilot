@@ -1242,7 +1242,7 @@ export const GetProviderModels = async (provider: ApiProvider): Promise<Record<s
 		case ApiProvider.Ollama:
 			return {}
 		case ApiProvider.OpenAICompatible:
-			return {}
+			return openAICompatibleModels
 		default:
 			return {}
 	}
