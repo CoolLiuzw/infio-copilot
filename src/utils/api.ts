@@ -1260,7 +1260,7 @@ export const GetProviderModels = async (provider: ApiProvider): Promise<Record<s
 		case ApiProvider.Groq:
 			return groqModels
 		case ApiProvider.Ollama:
-			return {}
+			return openAICompatibleModels
 		case ApiProvider.OpenAICompatible:
 			return openAICompatibleModels
 		default:
@@ -1289,10 +1289,13 @@ export const GetEmbeddingProviderModels = (provider: ApiProvider): Record<string
 			return qwenEmbeddingModels;
 		case ApiProvider.OpenAICompatible:
 			return openAICompatibleEmbeddingModels;
+		case ApiProvider.Ollama:
+			return openAICompatibleEmbeddingModels;
 		default:
 			return {}
 	}
 }
+
 // Get all embedding model ids for a provider
 export const GetEmbeddingProviderModelIds = (provider: ApiProvider): string[] => {
 	return Object.keys(GetEmbeddingProviderModels(provider))
