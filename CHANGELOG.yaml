@@ -1,4 +1,7 @@
 releases:
+  - version: "1.0.5"
+    features:
+    - "liuzw modify"
   - version: "1.0.4"
     features:
     - "liuzw modify"

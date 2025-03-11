@@ -323,6 +323,26 @@ export const openAiNativeModels = {
 		inputPrice: 0.15,
 		outputPrice: 0.6,
 	},
+	"deepseek-v3": {
+		maxTokens: 8000,
+		contextWindow: 64000,
+		supportsImages: false,
+		supportsPromptCache: true,
+		inputPrice: 0,
+		outputPrice: 0.28,
+		cacheWritesPrice: 0.14,
+		cacheReadsPrice: 0.014,
+	},
+	"deepseek-r1": {
+		maxTokens: 8000,
+		contextWindow: 64000,
+		supportsImages: false,
+		supportsPromptCache: true,
+		inputPrice: 0,
+		outputPrice: 2.19,
+		cacheWritesPrice: 0.55,
+		cacheReadsPrice: 0.14,
+	},
 } as const satisfies Record<string, ModelInfo>
 export const openAINativeEmbeddingModels = {
 	"text-embedding-3-small": {
