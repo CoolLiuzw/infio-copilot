@@ -1,4 +1,7 @@
 releases:
+  - version: "1.0.2"
+    features:
+    - "liuzw modify"
   - version: "0.0.4"
     features:
       - "Added new settings components for better organization"
